@@ -1,14 +1,20 @@
 section.contaner {
 	grid-template-columns: auto;
 }
+.banner {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: end;
+	-ms-flex-align: end;
+	align-items: flex-end;
+}
 h1 {
-	position: absolute;
-	font-size: 14px;
 	width: inherit;
-	padding: 10px 5px;
-	text-align: inherit;
-	margin: 355px 10px 0;
+	margin: 0;
+	padding: 20px 10px;
 	background-color: #39C2D7;
+	margin: 10px;
 }
 header div.banner .contaner {
 	width: inherit;
@@ -31,6 +37,6 @@ header div.banner .contaner {
 }
 .footer-nav a{
 	display: block;
-	margin-bottom: 5px;
-	margin-right: 0;
+	text-align: center;
+	margin: 0 0 5px;
 }
