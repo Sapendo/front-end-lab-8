@@ -1,0 +1,1 @@
+var getMin = (...arguments) => Math.min.apply(null,arguments);
