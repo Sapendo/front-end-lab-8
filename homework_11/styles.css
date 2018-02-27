@@ -1,0 +1,22 @@
+li {
+	list-style: none;
+	cursor: pointer;
+}
+li>p:hover, li>p:focus {
+	background-color: #ccc;
+}
+.material-icons {
+	color: #59575A;
+	font-size: 16px;
+}
+.material-icons.folder {
+	color: #F1C40F;
+}
+p{
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+.cursive {
+	font-style: italic;
+}
