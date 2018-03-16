@@ -1,0 +1,22 @@
+header {
+    background-color: @grey * 2.4;
+    .navbar {
+        padding: 0;
+        .nav-item {
+			&:hover {
+				background-color: @blue;
+			}
+			&:focus {
+				background-color: @blue;
+			}
+            .nav-link {
+                padding: 15px 10px;
+                color: @grey;
+                &:hover {                    
+                    text-decoration: none;
+                    color: @white;
+                }
+            }
+        }
+    }
+}

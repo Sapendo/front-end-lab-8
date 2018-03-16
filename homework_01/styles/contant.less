@@ -1,0 +1,44 @@
+.h {
+	color: @blue;
+	padding-top: 30px;
+}
+hr {
+	color: @blue;
+	background-color: @blue;
+	border: none;
+	height: 2px;
+	margin: 0 0 20px 0;
+}
+
+.card {
+	.card-body {
+		color: @white;
+		& p {
+			font-weight: 600;
+		}
+	}
+	&.red {
+		border: 1px solid @red;
+		.card-body{
+			background-color: @red;
+		}
+	}
+	&.blue {
+		border: 1px solid @blue;
+		.card-body{
+			background-color: @blue;
+		}
+	}
+	&.orange {
+		border: 1px solid @orange;
+		.card-body{
+			background-color: @orange;
+		}
+	}
+	&.green {
+		border: 1px solid @green;
+		.card-body{
+			background-color: @green;
+		}
+	}
+}
