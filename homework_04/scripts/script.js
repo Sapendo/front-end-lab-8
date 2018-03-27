@@ -101,21 +101,29 @@ Champion.prototype.getBonus = function(winer, loser) {
 function Monster(props) {
     Fighter.apply(this, arguments);
     this._enrage = 0;
-    this._doubleAttack = props.attack * 2;
+    this._wasEnrage = false;
+    this._baseAttack = props.attack;
 }
 Monster.prototype = Object.create(Fighter.prototype);
 Monster.prototype.constructor = Monster;
 Monster.prototype.fight = function(enemy) {
-    if (enemy._block) {
+    if (this._wasEnrage) {
+        this._attack = this._baseAttack;
+        this._wasEnrage = false;
+    } else if (enemy._block) {
         if (this._enrage) {
             this._enrage--;
+            if (!this._enrage) {
+                this._wasEnrage = true;
+            }
         }
         enemy._block = false;
         return;
     } else if (this._enrage) {
         this._enrage--;
-    } else {
-        this._attack = this._doubleAttack / 2;
+        if (!this._enrage) {
+            this._wasEnrage = true;
+        }
     }
     Fighter.prototype.fight.apply(this, arguments);
 }
@@ -128,6 +136,7 @@ Monster.prototype.fury = function() {
         this._currentHitpoints -= 5;
         this._totalHitpoints -= 5;
         this._attack = this._attack + 2;
+        this._baseAttack = this._baseAttack + 2;
     }
 }
 Monster.prototype.getBonus = function(winer, loser) {

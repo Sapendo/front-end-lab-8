@@ -10,6 +10,9 @@ function monsterBattleScenario() {
     }, {
         'fury': beast.fury
     }];
+	if(beast._enrage) {
+		return typesOfAction[0];
+	}
     return typesOfAction[getRandomInt(3)];
 }
 
@@ -17,10 +20,13 @@ function championBattleScenario() {
     let typesOfAction = [{
         'fight': hunter.fight
     }, {
-        'heal': hunter.heal
-    }, {
         'defence': hunter.defence
+    }, {
+		'heal': hunter.heal        
     }];
+	if((hunter._currentHitpoints + 5) > hunter._totalHitpoints){
+	   return typesOfAction[getRandomInt(2)];
+	   }
     return typesOfAction[getRandomInt(3)];
 }
 
