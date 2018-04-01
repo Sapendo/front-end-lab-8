@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="content">
+        <form action="#" id="form" name="checkIP">
+            <input type="text" name="ip" placeholder="255.255.255.255" required>
+            <div id="errorInfo" class="info"></div>
+            <button type="submit" id="submit" class="btn">Track ip</button>
+        </form>
+        <div id="loader" style="display:none;"></div>
+        <div id="info"></div>
+        <div id="answerfromValidation"></div>
+    </div>
+    <div id="map" class="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2qMYCQzEzMni9uiqVVUVWle8S9ZGH_0U"></script>
+    <script src="js/task1.js"></script>
+    <script src="js/task2.js"></script>
+</body>
+
+</html>
