@@ -1,5 +1,6 @@
 html {
     font: 16px Arial, Helvetica, sans-serif;
+	background-image: url(../img/bg.png);
 }
 
 .infoTable,
