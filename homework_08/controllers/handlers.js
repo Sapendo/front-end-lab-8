@@ -2,12 +2,12 @@ var fs = require('fs');
 var musicians = './data/storage.json';
 
 exports.create = (req, res) => {
-	if (!req.body) {
+	if (!req.body.id && !req.body.name && !req.body.band && !req.body.instrument) {
 		return res.status(400).send({
 			message: "Note content can not be empty"
 		});
 	}
-	const musician = {
+	let musician = {
 		id: req.body.id,
 		name: req.body.name,
 		band: req.body.band,
@@ -25,7 +25,7 @@ exports.create = (req, res) => {
 			if (el.name === musician.name) {
 				write = false;
 				res.status(409).send({
-					message: 'The musisian alredy exist'
+					message: 'Musician already exist.'
 				});
 			}
 		});
@@ -72,14 +72,16 @@ exports.findOne = (req, res) => {
 	});
 };
 
+// Изенения в базу данных вносится, но тест выдает ошибку. В чем проблема, не разобрался(((
+
 exports.update = (req, res) => {
-	let upDate = false;
-	const musician = {
-		id: req.body.id,
-		name: req.body.name,
-		band: req.body.band,
-		instrument: req.body.instrument
-	};
+	let upDate = false,
+		musician = {
+			id: req.body.id,
+			name: req.body.name,
+			band: req.body.band,
+			instrument: req.body.instrument
+		};
 	fs.readFile(musicians, (err, data) => {
 		if (err) {
 			res.status(404).send({
@@ -87,13 +89,14 @@ exports.update = (req, res) => {
 			});
 		}
 		data = JSON.parse(data);
+
 		data.map(el => {
-			if (el.id === +req.params.id) {
+			if (el.id === +req.body.id) {
 				upDate = true;
-				el.id = musician.id || el.id;
-				el.name = musician.name || el.name;
-				el.band = musician.band || el.band;
-				el.instrument = musician.instrument || el.instrument;
+				el.id = musician.id;
+				el.name = musician.name;
+				el.band = musician.band;
+				el.instrument = musician.instrument;
 			}
 		});
 		if (upDate) {
@@ -110,6 +113,10 @@ exports.update = (req, res) => {
 		}
 	});
 };
+
+// в api.tests.js есть ошибка. При проверке "delete" тест пробует удалить id - 7 но его
+// в базе нет и как следстви возвращает статус 404, но тест хочет что бы был возвращен
+// статус 200
 
 exports.delete = (req, res) => {
 	let upDate = false;

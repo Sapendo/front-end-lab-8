@@ -1,5 +1,5 @@
 module.exports = (app) => {
-	const rockstars = require('./controllers/handlers.js');
+	let rockstars = require('./controllers/handlers.js');
 	app.post('/rockstar', rockstars.create);
 	app.get('/rockstars', rockstars.findAll);
 	app.get('/rockstar/:id', rockstars.findOne);
