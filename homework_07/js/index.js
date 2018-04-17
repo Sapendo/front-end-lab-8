@@ -90,7 +90,7 @@ $(document).ready(() => {
         while (cell - 1 >= 0 && matrix[row][--cell] === template) {
             count++;
         }
-        return count === winningsConditions ? true : false;
+        return count >= winningsConditions;
     }
 
     function checkVertical(template, row, cell) {
@@ -103,7 +103,7 @@ $(document).ready(() => {
         while (row - 1 >= 0 && matrix[--row][cell] === template) {
             count++;
         }
-        return count === winningsConditions ? true : false;
+        return count >= winningsConditions;
     }
 
     function checkDiagonalLeftToRight(template, row, cell) {
@@ -118,7 +118,7 @@ $(document).ready(() => {
         while ((row - 1 >= 0) && (cell - 1 >= 0) && matrix[--row][--cell] === template) {
             count++;
         }
-        return count === winningsConditions ? true : false;
+        return count >= winningsConditions;
     }
 
     function checkDiagonalRightToLeft(template, row, cell) {
@@ -133,6 +133,6 @@ $(document).ready(() => {
         while ((row - 1 >= 0) && (+cell + 1 <= 14) && matrix[--row][++cell] === template) {
             count++;
         }
-        return count === winningsConditions ? true : false;
+        return count >= winningsConditions;
     }
 });
