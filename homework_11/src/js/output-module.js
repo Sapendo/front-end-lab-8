@@ -11,10 +11,11 @@ let inputs = document.getElementsByTagName('input'),
     
 operatorsArea.forEach( el => {
     el.addEventListener('click', (event) => {
+        result.innerHTML = '';
         let values = getValue(inputs);
         if ( arrayIsNumber(values, error )) {
             let action = event.target.dataset.act;
-            result.innerHTML = calculatingModule[action](+values[0],+values[1])
+            result.innerHTML = `<p>Result: ${calculatingModule[action](+values[0],+values[1])}</p>`;
         }
     });
 });
@@ -28,13 +29,14 @@ function getValue(arr) {
 }
 
 function arrayIsNumber(arr, error) {
+    let check = true;
     for (let i = 0; i < arr.length; i++) {
         if (arr[i].trim() != '' && typeof +arr[i].value === 'number' && !Number.isNaN(+arr[i])){
             error.innerHTML = '';
-            return true;
         } else {
             error.innerHTML = 'You input incorrect value! Value must be a number!';
             return false;
         }
     }
+    return check;
 }

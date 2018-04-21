@@ -86,10 +86,11 @@ let inputs = document.getElementsByTagName('input'),
 
 operatorsArea.forEach(el => {
     el.addEventListener('click', event => {
+        result.innerHTML = '';
         let values = getValue(inputs);
         if (arrayIsNumber(values, error)) {
             let action = event.target.dataset.act;
-            result.innerHTML = __WEBPACK_IMPORTED_MODULE_1__calculating_module__["a" /* default */][action](+values[0], +values[1]);
+            result.innerHTML = `<p>Result: ${__WEBPACK_IMPORTED_MODULE_1__calculating_module__["a" /* default */][action](+values[0], +values[1])}</p>`;
         }
     });
 });
@@ -103,15 +104,16 @@ function getValue(arr) {
 }
 
 function arrayIsNumber(arr, error) {
+    let check = true;
     for (let i = 0; i < arr.length; i++) {
         if (arr[i].trim() != '' && typeof +arr[i].value === 'number' && !Number.isNaN(+arr[i])) {
             error.innerHTML = '';
-            return true;
         } else {
             error.innerHTML = 'You input incorrect value! Value must be a number!';
             return false;
         }
     }
+    return check;
 }
 
 /***/ }),
@@ -154,16 +156,18 @@ function division(a, b) {
 
 "use strict";
 let operators = {
-    addition: '+',
-    subtraction: '-',
-    multiplication: '*',
-    division: '/'
+    addition: '&#43;',
+    subtraction: '&minus;',
+    multiplication: '&times;',
+    division: '&divide;'
 },
     inputsArea = document.getElementById('inputsArea'),
     operatorsArea = document.getElementById('operatorsArea');
 /* harmony default export */ __webpack_exports__["a"] = (function () {
     for (let i = 0; i < 2; i++) {
         let input = document.createElement('input');
+        input.classList = 'input';
+        input.setAttribute('placeholder', `Enter the number`);
         inputsArea.appendChild(input);
     }
     for (let operator in operators) {
@@ -171,6 +175,7 @@ let operators = {
             let button = document.createElement('button');
             button.innerHTML = operators[operator];
             button.dataset.act = operator;
+            button.classList = 'btn';
             operatorsArea.appendChild(button);
         }
     }
