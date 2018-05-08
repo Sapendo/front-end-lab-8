@@ -1,0 +1,57 @@
+.selectedColorsBox {
+    float: right;
+
+    .empty {
+        float: left;
+        width: 40px;
+        height: 40px;
+        background-color: $white;
+        border-radius: 5px;
+
+        &.lightest-blue {
+            border: 2px solid lighten($blue,20%);
+        }
+
+        &.light-blue {
+            border: 2px solid lighten($blue,10%);
+        }
+
+        &.blue {
+            border: 2px solid $blue;
+        }
+
+        &:nth-child(n+1) {
+            margin-left: -20px;
+        }
+    }
+
+    .selected {
+        float: left;
+        width: 40px;
+        height: 40px;
+        border-radius: 5px;
+        position: relative;
+
+        &:nth-child(n+1) {
+            margin-left: -10px;
+        }
+
+        .btnDel {
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: $red;
+            text-align: center;
+
+            & > i {
+                vertical-align:middle;
+                font-size: 14px;
+                margin-bottom: 9.5px;
+                color: $white;
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#root {
+    padding: 20px;
+}
+
+*:focus {
+    outline: none;
+}
+
+.header::after {
+    content: "";
+    display: block;
+    clear: both;
+}

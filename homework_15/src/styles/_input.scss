@@ -1,0 +1,9 @@
+input{
+    float: left;
+    font-size: 22px;
+    height: 40px;
+    border: none;
+        &::placeholder{
+            color: $grey;
+        }
+    }
