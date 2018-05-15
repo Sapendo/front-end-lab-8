@@ -5,14 +5,14 @@
   <td>{{ subject.subjectInfo.lecturer }}</td>
   <td>   
     <button (click)='onMakeChange()'>Edit</button>
-    <button (click)='onDelete($event)'>Delete</button> 
+    <button (click)='onDelete()'>Delete</button> 
   </td>
 </ng-container>
 <ng-template #elseBlock>
-  <td>{{ subject.index + 1 }}</td>
-  <td><input [(ngModel)]="subject.topic" placeholder="name"></td>
-  <td><input [(ngModel)]="subject.date" placeholder="date"></td>
-  <td><input [(ngModel)]="subject.lecturer" placeholder="lecturer"></td>
+  <td>{{ updateSubject.index + 1 }}</td>
+  <td><input [(ngModel)]="updateSubject.subjectInfo.topic" placeholder="name"></td>
+  <td><input [(ngModel)]="updateSubject.subjectInfo.date" placeholder="date"></td>
+  <td><input [(ngModel)]="updateSubject.subjectInfo.lecturer" placeholder="lecturer"></td>
   <td>   
     <button (click)='onSave()'>Save</button>
     <button (click)='onCancel()'>Cancel</button>

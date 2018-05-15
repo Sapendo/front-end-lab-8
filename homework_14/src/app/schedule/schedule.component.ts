@@ -8,7 +8,7 @@ import { AcademicSubjectService } from '../academic-subject.service';
   styleUrls: ['./schedule.component.css']
 })
 export class ScheduleComponent implements OnInit {
-  subjects: ISubject[] = [];
+  subjects: ISubject[];
 
   add(): void {
     const newSubject = {
@@ -25,21 +25,15 @@ export class ScheduleComponent implements OnInit {
     this.subjects[index] = subject;
     this.academicSubjectService.putSubject(subject.id, subject);
   }
-
   deleteSubject(subject): void {
-    const index = this.subjects.indexOf(subject.id);
-    this.subjects.splice(index, 1);
-    this.academicSubjectService.deleteSubject(subject.id);
+    this.subjects.splice(subject.index, 1);
+    this.academicSubjectService.deleteSubject(subject);
   }
+
   constructor( private academicSubjectService: AcademicSubjectService) { }
 
   ngOnInit() {
-    console.log(this.subjects);
-    
     this.subjects = this.academicSubjectService.getSubjects();
-
-    console.log(this.subjects);
-    // localStorage.clear();
   }
 
 }

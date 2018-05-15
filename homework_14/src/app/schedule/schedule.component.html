@@ -14,18 +14,8 @@
     <tr app-class
         *ngFor='let subject of subjects; let idx = index'       
         [subject]='{subjectInfo: subject, index: idx}'
-        (onChange)='updateSubject($event)'
-        [deleteSubject]='deleteSubject'
+        (Change)='updateSubject($event)'
+        (Delete)='deleteSubject($event)'
     ></tr>
-    <tr *ngIf='addSubject'>      
-      <td>{{ subjects.length + 1 }}</td>
-      <td><input [(ngModel)]="newSubject.topic" placeholder="name" type="text"></td>
-      <td><input [(ngModel)]="newSubject.date" placeholder="date" type="date"></td>
-      <td><input [(ngModel)]="newSubject.lecturer" placeholder="lecturer" type="text"></td>
-      <td>   
-        <button (click)='onSave()'>Save</button>
-        <button>Cancel</button>
-      </td>
-    </tr>
   </tbody>
 </table>

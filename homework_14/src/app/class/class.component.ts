@@ -9,8 +9,8 @@ import { ISubject } from '../interface';
 export class ClassComponent implements OnInit {
 
   @Input() subject: ISubject;
-  @Input() deleteSubject: void;
-  @Output() onChange = new EventEmitter<ISubject>();
+  @Output() Change = new EventEmitter();
+  @Output() Delete = new EventEmitter();
   edit: boolean;
   updateSubject: ISubject;
 
@@ -22,14 +22,14 @@ export class ClassComponent implements OnInit {
     this.edit = false;
     this.updateSubject = null;
   }
-  onDelete() {
-
-  }
   onSave() {
+    this.subject = {...this.updateSubject};
     this.edit = false;
     this.updateSubject = null;
-    this.subject = {...this.updateSubject};
-    this.onChange.emit(this.subject);
+    this.Change.emit(this.subject);
+  }
+  onDelete() {
+    this.Delete.emit(this.subject);
   }
   constructor() { }
 

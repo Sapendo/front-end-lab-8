@@ -22,14 +22,13 @@ export class AcademicSubjectService {
   }
   putSubject(id, subject): void {
     const bd = JSON.parse(localStorage.getItem('bd'));
-    const index = bd.indexOf(subject[id]);
-    bd[index] = subject;
+    const index = bd.findIndex(el => el.id === subject.id);
+    bd[subject.index] = subject.subjectInfo;
     localStorage.setItem('bd', JSON.stringify(bd));
   }
-  deleteSubject(id): void {
+  deleteSubject(subject): void {
     const bd = JSON.parse(localStorage.getItem('bd'));
-    const index = bd.indexOf(id);
-    bd.splice(index, 1);
+    bd.splice(subject.index, 1);
     localStorage.setItem('bd', JSON.stringify(bd));
   }
   constructor() { }
